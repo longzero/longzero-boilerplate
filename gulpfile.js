@@ -90,9 +90,9 @@ gulp.task('css', function() {
   return gulp.src(['src/vendors/**/*.css'], {base: 'src'})
     .pipe(concat('vendors.css'))
     .pipe(header('/* Generated on: ' + new Date() + ' */\n'))
-    .pipe(gulp.dest('development/css/'))
+    .pipe(gulp.dest('development/'))
     .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
-    .pipe(gulpif(argv.production, gulp.dest('public/css/')));
+    .pipe(gulpif(argv.production, gulp.dest('public/')));
 });
 // CSS preprocessor 
 gulp.task('stylus', function() {
@@ -102,9 +102,9 @@ gulp.task('stylus', function() {
       browsers: ['last 3 versions']
     }))
     .pipe(header('/* Generated on: ' + new Date() + ' */\n'))
-    .pipe(gulp.dest('development/css/'))
+    .pipe(gulp.dest('development/'))
     .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
-    .pipe(gulpif(argv.production, gulp.dest('public/css/')));
+    .pipe(gulpif(argv.production, gulp.dest('public/')));
 });
 
 // HTML 
@@ -142,9 +142,9 @@ gulp.task('js', function() {
   return gulp.src(jsFiles, {base: 'src'})
     .pipe(concat('main-generated.js'))
     .pipe(header('/* Generated on: ' + new Date() + ' */\n'))
-    .pipe(gulp.dest('development/js/'))
+    .pipe(gulp.dest('development/'))
     .pipe(gulpif(argv.production, minify({minify: true,minifyJS: true})))
-    .pipe(gulpif(argv.production, gulp.dest('public/js/')));
+    .pipe(gulpif(argv.production, gulp.dest('public/')));
 });
 
 // LOCAL SERVER
