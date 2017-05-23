@@ -5,7 +5,7 @@
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "latest",
     "gulp-concat": "^2.6.1",
-    "gulp-connect": "^4.0.0",
+    "gulp-connect-php": "^1.0.1",
     "gulp-css-preprocessor": "0.0.2",
     "gulp-header": "^1.8.8",
     "gulp-html-i18n": "^0.6.1",
@@ -13,6 +13,7 @@
     "gulp-inline-css": "^3.1.0",
     "gulp-minifier": "^0.2.1",
     "gulp-pug": "^3.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-util": "~2.2.12",
     "yargs": "^7.0.2"
   }
