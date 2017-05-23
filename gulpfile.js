@@ -23,8 +23,8 @@ gulp.task('emailCSS', function() {
     .pipe(autoprefixer({
       browsers: ['last 3 versions']
     }))
-    .pipe(header('/* Generated on: ' + new Date() + ' */\n'))
-    .pipe(gulp.dest('src/email/'));
+    .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
+    .pipe(gulp.dest('email/.tmp'));
 });
 
 // EMAIL PUG
@@ -38,7 +38,7 @@ gulp.task('emailHTML', function () {
       langDir: 'src/email/languages/',
       trace: true
     }))
-    .pipe(gulp.dest('.tmp/'))
+    .pipe(gulp.dest('email/.tmp/'))
     .pipe(inlineCss({
     	applyLinkTags: true,
       applyStyleTags: true,
@@ -47,7 +47,7 @@ gulp.task('emailHTML', function () {
     	removeLinkTags: true,
     	removeStyleTags: true
     }))
-    .pipe(header('<!-- Generated on: ' + new Date() + ' -->\n'))
+    .pipe(gulpif(argv.production, header('<!-- Generated on: ' + new Date() + ' -->\n')))
     .pipe(gulp.dest('email/'));
 });
 
