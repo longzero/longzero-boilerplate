@@ -13,7 +13,8 @@ if (isFirefox) $('html').addClass('firefox');
 if (isFirefox) $('html').addClass('firefox');
 
 // At least Safari 3+: "[object HTMLElementConstructor]"
-var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+// var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)
 if (isSafari) $('html').addClass('safari');
 
 // Internet Explorer 6-11
@@ -41,7 +42,7 @@ window.onmousemove = function() {
 
 // TOUCH DETECTION
 function isTouchDevice() {
-  return 'ontouchstart' in window        // works on most browsers 
+  return 'ontouchstart' in window        // works on most browsers
       || navigator.maxTouchPoints;       // works on IE10/11 and Surface
 };
 function hasTouch() {
