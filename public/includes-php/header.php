@@ -1,4 +1,3 @@
-<!-- Generated on: Tue May 23 2017 11:16:39 GMT-0400 (EDT) -->
 <!DOCTYPE html>
 <html lang="fr">
   <head>

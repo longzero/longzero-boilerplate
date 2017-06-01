@@ -1,5 +1,10 @@
-<!-- Generated on: Tue May 23 2017 11:16:39 GMT-0400 (EDT) -->
 
+    <script src="../vendors/detection.js"></script>
+    <script src="../vendors/device.min.js"></script>
+    <script src="../vendors/parsley-fr.js"></script>
+    <script src="../vendors/parsley.min.js"></script>
+    <script src="../vendors/smooth-scroll.js"></script>
+    <script src="../vendors/wow.min.js"></script>
     <script src="../js/main-generated.js"></script>
     <script>
       if ($('form').length) {window.Parsley.setLocale('fr');}

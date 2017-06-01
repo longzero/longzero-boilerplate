@@ -117,11 +117,11 @@ gulp.task('pug', function() {
     .pipe(pug({
       pretty: true
     }))
-    // .pipe(i18n({
-    //   createLangDirs: true,
-    //   langDir: 'src/languages/',
-    //   trace: true
-    // }))
+    .pipe(i18n({
+      createLangDirs: true,
+      langDir: 'src/languages/',
+      trace: true
+    }))
     .pipe(gulp.dest('public/'))
     .pipe(gulpif(argv.production, header('<!-- Generated on: ' + new Date() + ' -->\n')))
     .pipe(gulpif(argv.production, gulp.dest('public/')));
@@ -146,10 +146,20 @@ gulp.task('php', function() {
 
 
 // JAVASCRIPT
-// Put JS files together
-var jsFiles = ['src/js/**/*.js'];
-gulp.task('js', function() {
+// CSS
+// Put all vendor JS together
+var jsFiles = ['src/vendors/**/*.js'];
+gulp.task('jsVendors', function() {
   return gulp.src(jsFiles, {base: 'src'})
+    .pipe(gulp.dest('public/'))
+    .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
+    .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
+    .pipe(gulpif(argv.production, rename({suffix: '.min'})))
+    .pipe(gulpif(argv.production, gulp.dest('public/')));
+});
+// Put JS files together
+gulp.task('js', function() {
+  return gulp.src('src/js/**/*.js', {base: 'src'})
     .pipe(concat('main-generated.js'))
     .pipe(gulp.dest('public/js/'))
     .pipe(gulpif(argv.production, minify({minify: true,minifyJS: true})))
@@ -183,5 +193,5 @@ gulp.task('watch', function () {
 
 // TASKS
 // Bundled tasks
-gulp.task('default', ['css','stylus','pug','php','htmlRoot','js','images','watch','connect']);
-gulp.task('build', ['css','stylus','pug','php','htmlRoot','js','images']);
+gulp.task('default', ['css','stylus','pug','php','htmlRoot','jsVendors','js','images','watch','connect']);
+gulp.task('build', ['css','stylus','pug','php','htmlRoot','jsVendors','js','images']);
