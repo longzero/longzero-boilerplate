@@ -1,3 +1,54 @@
+// Buttons
+//
+// Various button styles.
+//
+// Markup:
+// <a class="button {{modifier_class}}">Link Button</a>
+// <button class="button {{modifier_class}}">Button Element</button>
+// <input class="button {{modifier_class}}" type="button" value="Input Button">
+//
+// :hover - When user hovers over button.
+// :focus - When button is focused.
+// .button--small - A small button.
+// .button--large - A large button.
+//
+// Weight: 1
+//
+// Styleguide Base.buttons
+.button {
+  padding: 1em 2em;
+  margin: .5em;
+  display: inline-block;
+  font-size: .9em;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f56476;
+  background-color: #fff;
+  border: 2px solid #f56476;
+  transition: .2s color, .2s background-color, .2s border-color;
+}
+
+.button:hover {
+  background-color: #f56476;
+  color: #fff;
+  cursor pointer
+  text-decoration none
+}
+
+.button:focus {
+  color: #3ddc97;
+  border-color: currentColor;
+}
+
+.button--small {
+  font-size: .5em;
+}
+
+.button--large {
+  font-size: 1.5em;
+}
+
 .social-sharing
   svg
     width 40px

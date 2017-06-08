@@ -43,6 +43,40 @@ ul,
 ol {
   margin-left: 0;
 }
+hr {
+  border-top: 5px solid #999;
+}
+.button {
+  padding: 1em 2em;
+  margin: 0.5em;
+  display: inline-block;
+  font-size: 0.9em;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f56476;
+  background-color: #fff;
+  border: 2px solid #f56476;
+  -webkit-transition: 0.2s color, 0.2s background-color, 0.2s border-color;
+  -o-transition: 0.2s color, 0.2s background-color, 0.2s border-color;
+  transition: 0.2s color, 0.2s background-color, 0.2s border-color;
+}
+.button:hover {
+  background-color: #f56476;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.button:focus {
+  color: #3ddc97;
+  border-color: currentColor;
+}
+.button--small {
+  font-size: 0.5em;
+}
+.button--large {
+  font-size: 1.5em;
+}
 .social-sharing svg {
   width: 40px;
   height: 40px;

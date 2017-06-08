@@ -11,6 +11,18 @@ body
   font-family font-default
   font-size: font-size
   font-weight: font-light
+
+// Links
+//
+// Links have a special styling without underline<br>
+//
+// :hover - The hover state underlines the link.
+//
+// Markup: <a class="{{modifier_class}}" href="#">This is a link</a>
+//
+// Weight: 1
+//
+// Styleguide: Base.links
 a
   color the-link
   font-weight: font-bold
@@ -26,3 +38,15 @@ p,ul,ol
   margin-bottom 1em
 ul,ol
   margin-left: 0
+
+// Hard rules
+//
+// This is a horizontal line for separating content.
+//
+// Markup: <hr>
+//
+// Weight: 10
+//
+// Styleguide: Base.horizontal-line
+hr
+  border-top 5px solid #999
