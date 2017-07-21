@@ -54,6 +54,20 @@ if (isTouchDevice()) {
 
 
 
+// iOS origin detection
+// This detects if the website is opened in Safari iOS, iOS fullscreen or iOS webview
+var isSafariIosStandalone = window.navigator.standalone,
+    userAgent = window.navigator.userAgent.toLowerCase(),
+    isSafariIos = /safari/.test( userAgent ),
+    ios = /iphone|ipod|ipad/.test( userAgent );
+if (ios) {
+  if (!isSafariIosStandalone && isSafariIos) $('html').addClass('ios-but-not-webview'); // browser
+  if (!isSafariIosStandalone && !isSafariIos) $('html').addClass('ios-webview'); // standalone
+  else if (!isSafariIosStandalone && !isSafariIos) $('html').addClass('ios-webview'); // uiwebview
+}
+
+
+
 
 //-----------------------------------------------------------------------------
 // OS DETECTION
