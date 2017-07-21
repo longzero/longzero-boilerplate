@@ -121,7 +121,7 @@ gulp.task('stylus', function() {
 });
 
 // Style guide
-gulp.task('styleguide', function() {
+gulp.task('styleguide-run', function() {
   return run('kss '
     + '--title "Generic Style Guide" '
     + '--source src/css '
@@ -132,6 +132,19 @@ gulp.task('styleguide', function() {
     ).exec();
   // return run('kss --config styleguide.json').exec();
 });
+gulp.task('styleguide-css', function() {
+  return gulp.src('src/styleguide/kss-assets/css/kss.scss')
+    .pipe(gulpCssPreprocessor())
+    .pipe(autoprefixer({
+      browsers: ['last 3 versions']
+    }))
+    .pipe(gulp.dest('src/styleguide/kss-assets/css/'))
+    .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
+    .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
+    // .pipe(gulpif(argv.production, rename({suffix: '.min'})))
+    .pipe(gulpif(argv.production, gulp.dest('src/styleguide/kss-assets/css/')));
+});
+
 
 // PUG
 // Compile pug files into HTML and split languages.
@@ -170,7 +183,6 @@ gulp.task('php', function() {
 
 
 // JAVASCRIPT
-// CSS
 // Put all vendor JS together
 var jsFiles = ['src/vendors/**/*.js'];
 gulp.task('jsVendors', function() {
@@ -196,7 +208,8 @@ gulp.task('js', function() {
 // LOCAL PHP SERVER
 gulp.task('connect', function() {
   connect.server({
-    base: 'public'
+    base: 'public',
+    port: 8080
   });
 });
 
@@ -204,7 +217,8 @@ gulp.task('connect', function() {
 // Watch files
 gulp.task('watch', function () {
   gulp.watch('src/vendors/**/*.css',['css']);
-  gulp.watch('src/css/**/*.styl',['stylus','styleguide']);
+  gulp.watch('src/css/**/*.styl',['stylus','styleguide-run']);
+  gulp.watch('src/styleguide/kss-assets/css/**/*.scss',['styleguide-css','styleguide-run']);
   gulp.watch('src/**/*.yaml',['pug']);
   gulp.watch('src/**/*.pug',['pug']);
   gulp.watch('src/**/*.php',['php']);
@@ -217,5 +231,5 @@ gulp.task('watch', function () {
 
 // TASKS
 // Bundled tasks
-gulp.task('default', ['css','stylus','styleguide','pug','php','htmlRoot','jsVendors','js','images','htaccess','watch','connect']);
-gulp.task('build', ['css','stylus','styleguide','pug','php','htmlRoot','jsVendors','js','images','htaccess']);
+gulp.task('default', ['css','stylus','styleguide-css','styleguide-run','pug','php','htmlRoot','jsVendors','js','images','htaccess','watch','connect']);
+gulp.task('build', ['css','stylus','styleguide-css','styleguide-run','pug','php','htmlRoot','jsVendors','js','images','htaccess']);

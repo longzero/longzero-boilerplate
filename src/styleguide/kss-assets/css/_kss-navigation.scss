@@ -7,7 +7,7 @@ $kss-nav-item-link-active: $cowabunga;
   top: 0;
   left: 0;
   display: block;
-  box-shadow: -10px 0 10px 10px rgba($black, 0.5);
+  // box-shadow: -10px 0 10px 10px rgba($black, 0.5);
   box-sizing: border-box;
   width: 85%;
   height: 100%;
@@ -17,9 +17,9 @@ $kss-nav-item-link-active: $cowabunga;
   font-weight: 400;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
-  
+
   @include mq(min, 768px) { width: 35%; }
-  
+
   @include mq(min, 1024px) {
     width: 25%;
     transform: translateX(0);
@@ -35,7 +35,7 @@ $kss-nav-item-link-active: $cowabunga;
 .kss-navigation__title {
   display: none;
   box-sizing: border-box;
-  padding: 20px 10px;
+  padding: 20px;
 
   @include mq(min, 1024px) { display: block; }
 }
@@ -81,7 +81,7 @@ $kss-nav-item-link-active: $cowabunga;
 }
 
 .kss-nav__name {
-  position: relative; 
+  position: relative;
   display: inline-block;
   vertical-align: middle;
   transition: transform 0.3s;
