@@ -86,7 +86,6 @@ gulp.task('htaccess', function() {
 });
 
 
-
 // IMAGES
 // Copy images
 gulp.task('images', function() {
@@ -95,13 +94,14 @@ gulp.task('images', function() {
     .pipe(gulpif(argv.production, gulp.dest('public/images/')));
 });
 
+
 // CSS
 // Put all vendor CSS together
 gulp.task('css', function() {
   return gulp.src(['src/vendors/**/*.css'], {base: 'src'})
     .pipe(concat('vendors.css'))
     .pipe(gulp.dest('public/css/'))
-    .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
+    .pipe(gulpif(argv.production, minify({minify: true, minifyCSS: true})))
     .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
     .pipe(gulpif(argv.production, rename({suffix: '.min'})))
     .pipe(gulpif(argv.production, gulp.dest('public/css/')));
@@ -114,11 +114,12 @@ gulp.task('stylus', function() {
       browsers: ['last 3 versions']
     }))
     .pipe(gulp.dest('public/'))
-    .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
+    .pipe(gulpif(argv.production, minify({minify: true, minifyCSS: true})))
     .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
     .pipe(gulpif(argv.production, rename({suffix: '.min'})))
     .pipe(gulpif(argv.production, gulp.dest('public/')));
 });
+
 
 // Style guide
 gulp.task('styleguide-run', function() {
@@ -139,7 +140,7 @@ gulp.task('styleguide-css', function() {
       browsers: ['last 3 versions']
     }))
     .pipe(gulp.dest('src/styleguide/kss-assets/css/'))
-    .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
+    .pipe(gulpif(argv.production, minify({minify: true, minifyCSS: true})))
     .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
     // .pipe(gulpif(argv.production, rename({suffix: '.min'})))
     .pipe(gulpif(argv.production, gulp.dest('src/styleguide/kss-assets/css/')));
@@ -173,6 +174,7 @@ gulp.task('htmlRoot', function() {
     .pipe(gulpif(argv.production, gulp.dest('public/')));
 });
 
+
 // PHP
 gulp.task('php', function() {
   return gulp.src('src/pages/**/*.php')
@@ -188,7 +190,7 @@ var jsFiles = ['src/vendors/**/*.js'];
 gulp.task('jsVendors', function() {
   return gulp.src(jsFiles, {base: 'src'})
     .pipe(gulp.dest('public/'))
-    .pipe(gulpif(argv.production, minify({minify: true,minifyCSS: true})))
+    .pipe(gulpif(argv.production, minify({minify: true, minifyCSS: true})))
     .pipe(gulpif(argv.production, header('/* Generated on: ' + new Date() + ' */\n')))
     .pipe(gulpif(argv.production, rename({suffix: '.min'})))
     .pipe(gulpif(argv.production, gulp.dest('public/')));
@@ -212,6 +214,7 @@ gulp.task('connect', function() {
     port: 8080
   });
 });
+
 
 // WATCH
 // Watch files
