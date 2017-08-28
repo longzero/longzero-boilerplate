@@ -1,3 +1,19 @@
+/********************
+
+DESCRIPTION
+This is for
+- browser detection
+- OS detection
+- touch screen detection
+- iOS webview detection
+
+AUTHOR
+Long Nguyen
+http://long.loves.design
+long@longzero.com
+
+********************/
+
 
 //-----------------------------------------------------------------------------
 // BROWSER/FEATURE DETECTION

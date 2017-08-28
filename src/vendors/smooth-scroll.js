@@ -1,8 +1,6 @@
-
 // ==========================================================================
 // SMOOTH SCROLLING
 // http://css-tricks.com/snippets/jquery/smooth-scrolling/
-// Really only used for “back to top”
 // ==========================================================================
 $(function() {
   $('a[href*=#]:not([href=#])').click(function() {

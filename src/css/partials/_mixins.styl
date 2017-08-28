@@ -8,3 +8,13 @@ linear_gradient(origin, colors...)
   background-image:     -ms-linear-gradient(origin, colors) // IE 10
   background-image:      -o-linear-gradient(origin, colors) // Opera (11.1 - 12.0)
   background-image:         linear-gradient(origin, colors) // W3C
+
+placeholder(value)
+  &::-webkit-input-placeholder
+    color value
+  &::-moz-placeholder
+    color value
+  &:-ms-input-placeholder
+    color value
+  &:-moz-placeholder
+    color value
